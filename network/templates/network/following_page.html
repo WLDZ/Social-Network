@@ -1,0 +1,67 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+
+
+
+{%  for p in all_posts.object_list  %}
+
+<div id="view_all_post">   
+    <div class="timeline">
+        <div class="container left">
+          <div class="content">
+              <div style="clear: both">
+              <h4 style="float: left">{{p.user.username}}</h4>
+              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
+            </div>
+            <br><br>
+            <p>{{p.title}}</p>
+          </div>
+          
+          <div id = "like_buttons">
+            <button class="olike" id = {{p.id}}l>
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              
+            </button>
+            <label id=lbl{{p.id}}>{{p.likes}} </label>
+  
+            <button class="vdislike" id = {{p.id}}dl>
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
+             
+            </button>
+            <label id=lbd{{p.id}} >{{p.dislikes}} </label>
+          </div>
+      
+        </div>
+        
+      </div>
+</div>
+<br></br>
+
+{% endfor %}
+
+<div class= "page-links" >
+  <div class="pagination">
+
+    {% if   all_posts.has_previous     %}
+    <a href="{% url 'following_page' %}?page={{ all_posts.previous_page_number }}"> Previous Page</a>
+    {% endif %}
+
+    {% if   all_posts.has_next     %}
+    <a href="{% url 'following_page' %}?page={{ all_posts.next_page_number }}"> Next Page</a>
+    {% endif %}
+  </div>
+  
+</div>
+
+{% block script %}
+    <script src="{% static 'network/like.js' %}"></script>
+    <script src="{% static 'network/check.js' %}"></script>
+    <script src="{% static 'network/dislike.js' %}"></script>
+{% endblock %}
+
+{% endblock %}
+

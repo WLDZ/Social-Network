@@ -1,0 +1,23 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<ul class="messages">
+    {% for message in messages %}
+    <h3  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </h3>
+    {% endfor %}
+</ul>
+   
+
+<div id="add_post">   
+    <form action="{% url 'create_post' %}" method="POST">
+        {% csrf_token %}
+        <textarea  class="form-control" name="new-post" id = "new-post" placeholder="Create a new post"></textarea>
+        <input class="btn btn-primary" type="submit" value="Post">
+    </form>  
+</div>
+
+
+{% endblock %}
+

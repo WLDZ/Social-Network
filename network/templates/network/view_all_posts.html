@@ -1,0 +1,95 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<ul class="messages">
+    {% for message in messages %}
+    <h3  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </h3>
+    {% endfor %}
+</ul>
+
+   
+
+<div id="add_post">   
+    <form action="{% url 'create_post' %}" method="POST">
+        {% csrf_token %}
+        <textarea  class="form-control" name="new-post" id = "new-post" placeholder="Create a new post"></textarea>
+        <input class="btn btn-primary" type="submit" value="Post">
+    </form>  
+</div>
+
+<br></br>
+{%  for p in post  %}
+
+<div id="view_all_post">   
+    <div class="timeline">
+        <div class="container left">
+          <div class="content">
+              <div style="clear: both">
+                <input type="hidden" id="creator_id" value={{p.user.id}}> 
+              <h4 style="float: left"> <a href="/visit_user_profle/{{p.user.id}}">{{p.user.username}}</a></h4>
+              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
+            </div>
+            <br><br>
+            <textarea class="form-control" id={{p.id}}p readonly>{{p.title}}</textarea>
+          </div>
+        <br>
+
+        
+    
+          
+        <div id = "like_buttons">
+          <button class="olike" id = {{p.id}}l>
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              
+            </button>
+            <label id=lbl{{p.id}}>{{p.likes}} </label>
+  
+            <button class="vdislike" id = {{p.id}}dl>
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
+             
+            </button>
+            <label id=lbd{{p.id}}>{{p.dislikes}} </label>
+           
+        </div>
+          
+        <br><br>
+
+      
+        </div>
+        
+      </div>
+</div>
+<br></br>
+
+{% endfor %}
+
+
+<div class= "page-links" >
+  <div class="pagination">
+
+    {% if   post.has_previous     %}
+    <a href="{% url 'view_all_posts' %}?page={{ post.previous_page_number }}"> Previous Page</a>
+    {% endif %}
+
+    {% if   post.has_next     %}
+    <a href="{% url 'view_all_posts' %}?page={{ post.next_page_number }}"> Next Page</a>
+    {% endif %}
+  </div>
+  
+</div>
+
+
+{% block script %}
+    <script src="{% static 'network/like.js' %}"></script>
+    <script src="{% static 'network/check.js' %}"></script>
+    <script src="{% static 'network/dislike.js' %}"></script>
+
+{% endblock %}
+
+
+
+{% endblock %}
+
+

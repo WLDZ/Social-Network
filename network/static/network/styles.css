@@ -1,0 +1,156 @@
+button.like{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+    line-heigth: 50px;
+	border-radius: 50%;
+	color: rgba(0,150,136 ,1);
+	background-color:rgba(38,166,154 ,0.3);
+	border-color: rgba(0,150,136 ,1);
+	border-width: 1px;
+	font-size: 15px;
+}
+
+button.dislike{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	line-heigth: 50px;
+	border-radius: 50%;
+	color: rgba(255,82,82 ,1);
+	background-color: rgba(255,138,128 ,0.3);
+	border-color: rgba(255,82,82 ,1);
+	border-width: 1px;
+	font-size: 15px;
+}
+
+#like_buttons{
+    margin-left: auto; 
+    float: right;
+
+}
+
+
+#view_all_post {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 80%;
+  }
+
+
+  .card {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 40%;
+	border-radius: 5px;
+	position: absolute;
+	left: 30%;
+	background-color:blanchedalmond
+  }
+  
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+#follow-button {
+	color: #3399FF;
+	font-family: "Helvetica";
+	font-size: 10pt;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #3399FF;
+	border-radius: 3px;
+	width: 85px;
+	height: 30px;
+	position: absolute;	 
+	right: 50px;	
+	cursor: hand;		    
+  }
+
+.page-links{
+
+	
+	text-align: center;
+
+}
+
+.pagination {
+	display: inline-block;
+  }
+
+  .pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+  }
+
+
+.save{
+	color: #3399FF;
+	font-family: "Helvetica";
+	font-size: 10pt;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #3399FF;
+	border-radius: 3px;
+	width: 70px;
+	height: 30px;   
+  }
+
+
+  .edit{
+	color: #3399FF;
+	font-family: "Helvetica";
+	font-size: 10pt;
+	background-color: #ffffff;
+	border: 1px solid;
+	border-color: #3399FF;
+	border-radius: 3px;
+	width: 70px;
+	height: 30px;   
+  }
+  
+  
+  button.olike{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+    line-heigth: 50px;
+	border-radius: 50%;
+	color: rgba(0,150,136 ,1);
+	background-color:rgba(38,166,154 ,0.3);
+	border-color: rgba(0,150,136 ,1);
+	border-width: 1px;
+	font-size: 15px;
+}
+
+button.vlike{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+    line-heigth: 50px;
+	border-radius: 50%;
+	color: rgba(0,150,136 ,1);
+	background-color:rgba(38,166,154 ,0.3);
+	border-color: rgba(0,150,136 ,1);
+	border-width: 1px;
+	font-size: 15px;
+}
+
+
+button.vdislike{
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	line-heigth: 50px;
+	border-radius: 50%;
+	color: rgba(255,82,82 ,1);
+	background-color: rgba(255,138,128 ,0.3);
+	border-color: rgba(255,82,82 ,1);
+	border-width: 1px;
+	font-size: 15px;
+}
