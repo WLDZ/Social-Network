@@ -105,8 +105,9 @@
 
 {% block scripts %}
 <script src="{% static 'network/follow.js' %}"></script>
-<script src="{% static 'network/visitprofile.js' %}"></script>
-<script src="{% static 'network/check.js' %}"></script>
+{% comment %} <script src="{% static 'network/visitprofile.js' %}"></script> {% endcomment %}
+{% comment %} <script src="{% static 'network/check.js' %}"></script> {% endcomment %}
+<script src="{% static 'network/like.js' %}"></script>
 <script src="{% static 'network/dislike.js' %}"></script>
 
 {% endblock %}

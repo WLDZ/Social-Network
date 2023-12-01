@@ -15,8 +15,12 @@
     <form action="{% url 'create_post' %}" method="POST">
         {% csrf_token %}
         <textarea  class="form-control" name="new-post" id = "new-post" placeholder="Create a new post"></textarea>
-        <input class="btn btn-primary" type="submit" value="Post">
-    </form>  
+        <br>
+        <div class="text-center">
+          <input class="btn btn-primary" type="submit" value="Post">
+        </div>
+
+      </form>  
 </div>
 
 <br></br>
@@ -28,11 +32,21 @@
           <div class="content">
               <div style="clear: both">
                 <input type="hidden" id="creator_id" value={{p.user.id}}> 
-              <h4 style="float: left"> <a href="/visit_user_profle/{{p.user.id}}">{{p.user.username}}</a></h4>
-              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
+
+                <div style="display: flex; align-items: center;">
+                  <div class="circular--portrait" style="margin-right: 10px;">
+                      <img src="{% static '/network/img/default.png' %}" />
+                  </div>
+                  <h4 style="margin: 0;"><a href="/visit_user_profle/{{p.user.id}}">{{p.user.username}}</a></h4>
+                  {% comment %} <h5 style="margin-left: 15px;">@{{p.user.username}} </h5> {% endcomment %}
+
+                  <h6 style="margin-left: auto;">Posted at: {{p.date_posted}}</h6>
+              </div>
+                         
             </div>
-            <br><br>
-            <textarea class="form-control" id={{p.id}}p readonly>{{p.title}}</textarea>
+            <textarea class="form-control" 
+            disabled style="background-color:rgb(229, 234, 248); color:black; margin-top: 10px;" 
+            id="{{ p.id }}p" readonly>{{ p.title }}</textarea>
           </div>
         <br>
 
@@ -83,7 +97,7 @@
 
 {% block script %}
     <script src="{% static 'network/like.js' %}"></script>
-    <script src="{% static 'network/check.js' %}"></script>
+    {% comment %} <script src="{% static 'network/check.js' %}"></script> {% endcomment %}
     <script src="{% static 'network/dislike.js' %}"></script>
 
 {% endblock %}

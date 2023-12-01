@@ -1,18 +1,20 @@
 {% extends "network/layout.html" %}
 {% load static %}
 
-
-
 {% block body %}
-
-
-
 
 
 <div class="card">
     <div class="container">
-        <input type="hidden" id="e" value={{profile_details.id}}>
-       <h3 style= "text-align: center"><b>{{profile_details.username}}</b></h3> 
+      <input type="hidden" id="e" value={{profile_details.id}}>
+      
+    <div style="text-align: center; margin-top: 20px;">
+        <div class="circular--portrait" style="display: inline-block;">
+            <img src="{% static '/network/img/default.png' %}" />
+        </div>
+        <h3 style="display: block; margin: 10px auto 0;"><b>{{ profile_details.username }}</b></h3>
+    </div>
+ 
       <div style="clear: both">
       <h4 style="float: left"><b>Followers {{followers}}</b></h4> 
       <h4 style="float: right" ><b>Following {{following}}</b></h4> 
@@ -26,8 +28,6 @@
   <br></br>
   <br></br>
   <br></br>
-  
-
 
 
 {%  for p in all_posts  %}
@@ -68,8 +68,7 @@
           {%endif%}
       
         </div>
-
-        
+       
       </div>
 </div>
 <br></br>
@@ -92,12 +91,11 @@
 
 
 
-
 {% block scripts %}
-<script src="{% static 'network/check.js' %}"></script>
+{% comment %} <script src="{% static 'network/check.js' %}"></script> {% endcomment %}
+<script src="{% static 'network/like.js' %}"></script>
 <script src="{% static 'network/dislike.js' %}"></script>
 
 {% endblock %}
 
 {% endblock %}
-

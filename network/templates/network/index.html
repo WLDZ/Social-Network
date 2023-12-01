@@ -10,13 +10,17 @@
 </ul>
    
 
-<div id="add_post">   
-    <form action="{% url 'create_post' %}" method="POST">
+<div id="add_post">
+    <form action="{% url 'create_post' %}" method="POST" style="text-align: center;">
         {% csrf_token %}
-        <textarea  class="form-control" name="new-post" id = "new-post" placeholder="Create a new post"></textarea>
-        <input class="btn btn-primary" type="submit" value="Post">
-    </form>  
+        <div style="margin-right: 10px;"> <!-- Adjust margin-right as needed -->
+            <textarea class="form-control" name="new-post" id="new-post" placeholder="Create a new post"></textarea>
+        </div>
+        <br>
+        <input id="postButton" class="btn btn-primary" type="submit" value="Post">
+    </form>
 </div>
+
 
 
 {% endblock %}

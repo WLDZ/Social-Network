@@ -9,7 +9,19 @@ class User(AbstractUser):
     followings =models.IntegerField(default=0)
 
     def __str__(self):
-        return f" {self.username}: {self.followers}:  {self.followings}"
+        return f" Username = {self.username} | Total followers = {self.followers} | Total followings = {self.followings}"
+
+
+class Profile_Picture(models.Model):
+    user = models.ForeignKey(
+            User, on_delete=models.CASCADE, related_name="user_pic")
+    image_data = models.BinaryField(null=True)
+
+    def __str__(self):
+        return f" {self.user}: {self.title}: {self.image_data}"
+
+
+
 
 
 class Post(models.Model):

@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
  
-
     
     document.querySelector('#follow-button').addEventListener('click',follow_unfollow);
     

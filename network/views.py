@@ -488,17 +488,3 @@ def undislike(request):
     Like.objects.filter(main_user = post_onwer_id.user, post_like_user = disliker,post_id = postid,user_disliked=True).delete()
   
     return JsonResponse({"message": "Post updated successfully!!!"}, status=201)
-
-
-
-'''
-from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
-class Profile(DetailView):
-      template_name = 'network/user_profile.html'
-      queryset = User.objects.all()
-      def get_object(self):
-           UserName= self.kwargs.get("username")
-           return get_object_or_404(User, username=UserName)
-
-'''
