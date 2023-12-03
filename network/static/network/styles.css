@@ -196,3 +196,19 @@ postButton {
 .circular--portrait img { 
 	width: 100%; 
 	height: auto; }
+
+.cover-page {
+		/* Add styling for the cover page, such as background image, colors, etc. */
+		background-size: cover;
+		background-position: center;
+		color: #ffffff; /* Set text color to contrast with the background */
+		padding-bottom: 50px; /* Adjust bottom padding as needed */
+	}
+  
+	/* Customize the appearance of the cover page content */
+.cover-page .container {
+		/* Add styles for the container within the cover page */
+		padding: 20px; /* Add padding as needed */
+	}
+  
+	/* Customize other styles as needed */

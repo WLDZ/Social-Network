@@ -1,106 +1,77 @@
 {% extends "network/layout.html" %}
 {% load static %}
 
-
-
 {% block body %}
 
-
-{%if follow_ind and profile_details.id != current_user %}
-<button id="follow-button" value = 'Unfollow'>Unfollow</button>
-{% elif follow_ind == False and profile_details.id != current_user  %}
+{% if follow_ind and profile_details.id != current_user %}
+<button id="follow-button" value="Unfollow">Unfollow</button>
+{% elif follow_ind == False and profile_details.id != current_user %}
 <button id="follow-button">Follow</button>
-{%endif%}
+{% endif %}
 
-
-<div class="card">
-    <div class="container">
-        <input type="hidden" id="e" value={{profile_details.id}}>
-       <h3 style= "text-align: center"><b>{{profile_details.username}}</b></h3> 
-      <div style="clear: both">
-      <h4 style="float: left"><b>Followers </b></h4> 
-      <h4 style="float: right" id = "followcount" >{{followers}}</h4> 
-   
-    </div>
-
-    <div style="clear: both">
-      <h4 style="float: left"><b>Following </b></h4> 
-      <h4 style="float: right" id = "followingcount" > {{following}}</h4> 
-   
-    </div>
-
-
-
-    </div>
-  </div>
-
-
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  
-
-
-
-{%  for p in all_posts  %}
-
-
-<div id="view_all_post">   
-    <div class="timeline">
-        <div class="container left">
-          <div class="content">
-              <div style="clear: both">
-              <h4 style="float: left">{{p.user.username}}</h4>
-              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
-            </div>
-            <br><br>
-            <textarea class="form-control" id={{p.id}}p readonly>{{p.title}}</textarea>
-          </div>
-          
-          <div id = "like_buttons">
-            <button class="vlike" id = {{p.id}}l>
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                
-              </button>
-              <label id=lbl{{p.id}}>{{p.likes}} </label>
-    
-              <button class="vdislike" id = {{p.id}}dl>
-                <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
-               
-              </button>
-              <label id=lbd{{p.id}}>{{p.dislikes}} </label>
-             
-          </div>
-
-          {%  if   p.user.id == current_user   %}
-
-          <button class="edit" id="{{p.id}}e" value={{p.id}}>Edit Post</button>
-          <button class="save" id={{p.id}}b style =display:none >Save</button>
-
-          {%endif%}
-      
+<div class="cover-page_other_profile" style="background-image: url('https://source.unsplash.com/random');">
+    <!-- Cover Page Content -->
+    <div class="container" style="display: inline-block;">
+        <input type="hidden" id="e" value="{{ profile_details.id }}">
+        <h1 style="text-align: center; margin-top: 50px;"><b>{{ profile_details.username }}</b></h1>
+        <div style="clear: both">
+            <h2 style="float: left; margin-bottom: 20px;"><b>Followers</b></h2>
+            <h2 style="margin-bottom: 20px; float: left; margin-left: 5px;"><b>{{ followers }}</b></h2>
+            <h2 style="float: right; margin-bottom: 20px"><b>{{ following }}</b></h2>
+            <h2 style="float: right; margin-bottom: 20px; margin-right: 5px;"><b>Following</b></h2>
         </div>
-
-        
-      </div>
+    </div>
 </div>
+
 <br></br>
 
+{% for p in all_posts %}
+  <div id="view_all_post">   
+    <div class="timeline">
+      <div class="container left">
+        <div class="content">
+          <div style="clear: both">
+            <h4 style="float: left;">{{p.user.username}}</h4>
+            <h6 style="float: right;">Posted at: {{p.date_posted}}</h6>
+          </div>
+          <textarea class="form-control" 
+          disabled style="background-color:rgb(229, 234, 248); color:black; margin-top: 10px;" 
+          id="{{ p.id }}p" readonly>{{ p.title }}</textarea>
+
+           {% comment %} 
+                        each button div should have a unique to id otherwise the button pannel will
+                        not be displayed properly. the button will area as sperate thing outside the post panel.
+                        {% endcomment %}
+          
+          <div id="like_buttons_{{ p.id }}" style="text-align: right;">
+            <button class="vlike" id="{{p.id}}l">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            </button>
+            <label id="lbl{{p.id}}">{{p.likes}}</label>
+    
+            <button class="vdislike" id="{{p.id}}dl">
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+            </button>
+            <label id="lbd{{p.id}}">{{p.dislikes}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br></br>
 {% endfor %}
 
-<div class= "page-links" >
-  <div class="pagination">
 
-    {% if   all_posts.has_previous     %}
-    <a href="{% url 'user_profle' %}?page={{ all_posts.previous_page_number }}"> Previous Page</a>
-    {% endif %}
 
-    {% if   all_posts.has_next     %}
-    <a href="{% url 'user_profle' %}?page={{ all_posts.next_page_number }}"> Next Page</a>
-    {% endif %}
-  </div>
-  
+<div class="page-links" style="text-align: right;">
+    <div class="pagination">
+        {% if all_posts.has_previous %}
+        <a href="{% url 'user_profle' %}?page={{ all_posts.previous_page_number }}"> Previous Page</a>
+        {% endif %}
+        {% if all_posts.has_next %}
+        <a href="{% url 'user_profle' %}?page={{ all_posts.next_page_number }}"> Next Page</a>
+        {% endif %}
+    </div>
 </div>
 
 {% block scripts %}
@@ -113,4 +84,3 @@
 {% endblock %}
 
 {% endblock %}
-

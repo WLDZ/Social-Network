@@ -58,8 +58,9 @@ async function disliked(user_id) {
       likes_count = parseInt(document.getElementById(`lbd${user_id}`).innerHTML,10)
 
       // console.log(document.getElementById(`lbd${user_id}`).innerHTML)
-      document.getElementById(`lbd${user_id}`).innerHTML =likes_count+=1
-      document.getElementById(`${user_id}dl`).style.backgroundColor = "grey" 
+      document.getElementById(`lbd${user_id}`).innerHTML =likes_count+=1;
+      document.getElementById(`${user_id}dl`).style.backgroundColor = "grey";
+      document.getElementById(`${user_id}l`).disabled = true; 
       
       
   
@@ -78,6 +79,7 @@ async function disliked(user_id) {
       likes_count = parseInt(document.getElementById(`lbd${user_id}`).innerHTML,10)
       document.getElementById(`lbd${user_id}`).innerHTML =likes_count-=1
       document.getElementById(`${user_id}dl`).style.backgroundColor = "#FF9C92"
+      document.getElementById(`${user_id}l`).disabled = false;
 
   }
   

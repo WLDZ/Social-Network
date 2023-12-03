@@ -8,37 +8,44 @@
 
 
 {%  for p in all_posts.object_list  %}
-
 <div id="view_all_post">   
     <div class="timeline">
         <div class="container left">
-          <div class="content">
-              <div style="clear: both">
-              <h4 style="float: left">{{p.user.username}}</h4>
-              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
-            </div>
-            <br><br>
-            <p>{{p.title}}</p>
-          </div>
-          
-          <div id = "like_buttons">
-            <button class="olike" id = {{p.id}}l>
-              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-              
-            </button>
-            <label id=lbl{{p.id}}>{{p.likes}} </label>
-  
-            <button class="vdislike" id = {{p.id}}dl>
-              <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
-             
-            </button>
-            <label id=lbd{{p.id}} >{{p.dislikes}} </label>
-          </div>
+                    <div class="content">
+                      <div style="clear: both">
+                        <h5 style="float: left;">@{{p.user.username}}</h5>
+                        <h6 style="float: right;">Posted at: {{p.date_posted}}</h6>
+                      </div>
+                      
+                      <textarea class="form-control" 
+                      disabled style="background-color:rgb(229, 234, 248); color:black; margin-top: 10px;" 
+                      id="{{ p.id }}p" readonly>{{ p.title }}</textarea>
+                    
+                    
+                      <div id = "like_buttons_{{ p.id }}" style="text-align: right;">
+                        {% comment %} 
+                        each button div should have a unique to id otherwise the button pannel will
+                        not be displayed properly. the button will area as sperate thing outside the post panel.
+                        {% endcomment %}
+
+                        <button class="olike" id = "{{p.id}}l">
+                          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 
+                        </button>
+                        <label id="lbl{{p.id}}">{{p.likes}} </label>
+                        <button class="vdislike" id = "{{p.id}}dl">
+                          <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
+                        </button>
+                        <label id="lbd{{p.id}}" >{{p.dislikes}} </label>
+                      </div>
+
+                                          
+                    </div>
       
         </div>
         
       </div>
 </div>
+
 <br></br>
 
 {% endfor %}

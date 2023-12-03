@@ -55,6 +55,7 @@ async function liked(user_id) {
             likes_count = parseInt(document.getElementById(`lbl${user_id}`).innerHTML, 10);
             document.getElementById(`lbl${user_id}`).innerHTML = likes_count += 1;
             document.getElementById(`${user_id}l`).style.color = "blue";
+            document.getElementById(`${user_id}dl`).disabled = true;
         } else {
             // Using async/await in the fetch call
             const response = await fetch('/unlike/', {
@@ -69,6 +70,7 @@ async function liked(user_id) {
             likes_count = parseInt(document.getElementById(`lbl${user_id}`).innerHTML, 10);
             document.getElementById(`lbl${user_id}`).innerHTML = likes_count -= 1;
             document.getElementById(`${user_id}l`).style.color = "#26a69a";
+            document.getElementById(`${user_id}dl`).disabled = false;
         }
     } catch (error) {
         console.error("Error in liked function:", error);

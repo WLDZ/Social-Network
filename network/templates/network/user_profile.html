@@ -3,90 +3,86 @@
 
 {% block body %}
 
-
-<div class="card">
-    <div class="container">
-      <input type="hidden" id="e" value={{profile_details.id}}>
+<div class="cover-page" style="background-image: url('https://source.unsplash.com/random');">
+  <!-- Cover Page Content -->
+  <div class="container">
+      <input type="hidden" id="e" value="{{ profile_details.id }}">
       
-    <div style="text-align: center; margin-top: 20px;">
-        <div class="circular--portrait" style="display: inline-block;">
-            <img src="{% static '/network/img/default.png' %}" />
-        </div>
-        <h3 style="display: block; margin: 10px auto 0;"><b>{{ profile_details.username }}</b></h3>
-    </div>
- 
+      <div style="text-align: center;">
+          <div class="circular--portrait" style="display: inline-block;">
+              <img src="{% static '/network/img/default.png' %}" />
+          </div>
+          <h1 style="display: block; margin: 10px auto 0;"><b>{{ profile_details.username }}</b></h1>
+      </div>
+
       <div style="clear: both">
-      <h4 style="float: left"><b>Followers {{followers}}</b></h4> 
-      <h4 style="float: right" ><b>Following {{following}}</b></h4> 
-   
-    </div>
-    </div>
+          <h2 style="float: left"><b>Followers {{ followers }}</b></h2>
+          <h2 style="float: right"><b>Following {{ following }}</b></h2>
+      </div>
   </div>
+</div>
+
+<!-- Additional Styling for Card Section -->
 
 
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
+<br></br>
 
 
 {%  for p in all_posts  %}
 
 
 <div id="view_all_post">   
-    <div class="timeline">
-        <div class="container left">
-          <div class="content">
-              <div style="clear: both">
-              <h4 style="float: left">{{p.user.username}}</h4>
-              <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
+  <div class="timeline">
+      <div class="container left">
+        <div class="content">
+            <div style="clear: both">
+            <h4 style="float: left">{{p.user.username}}</h4>
+            <h6 style="float: right">Posted at: {{p.date_posted}}</h6>
             </div>
-            <br><br>
-            <textarea class="form-control" id={{p.id}}p readonly>{{p.title}}</textarea>
-          </div>
-          
-          <div id = "like_buttons">
-            <button class="vlike" id = {{p.id}}l>
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                
-              </button>
-              <label id=lbl{{p.id}}>{{p.likes}} </label>
-    
-              <button class="vdislike" id = {{p.id}}dl>
-                <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
-               
-              </button>
-              <label id=lbd{{p.id}}>{{p.dislikes}} </label>
-             
-          </div>
-
-          {%  if   p.user.id == current_user   %}
-
-          <button class="edit" id="{{p.id}}e" value={{p.id}}>Edit Post</button>
-          <button class="save" id={{p.id}}b style =display:none >Save</button>
-
-          {%endif%}
-      
+            <textarea class="form-control" id="{{p.id}}p" readonly>{{p.title}}</textarea>
         </div>
-       
+        
+        <div id = "like_buttons_{{p.id}}" style="margin-top: 10px; text-align: right;">
+          <button class="vlike" id = "{{p.id}}l">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              
+            </button>
+            <label id="lbl{{p.id}}">{{p.likes}} </label>
+  
+            <button class="vdislike" id = "{{p.id}}dl">
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"> </i>
+            </button>
+            <label id="lbd{{p.id}}">{{p.dislikes}} </label>
+
+            {%  if   p.user.id == current_user   %}
+
+            <button class="edit" id="{{p.id}}e" value={{p.id}} style="float: left;">Edit Post</button>
+            <button class="save" id="{{p.id}}b" style ="display:none; float: left;" >Save</button>
+
+            {%endif%}
+          
+        </div>
+    
       </div>
+  
+    </div>
 </div>
 <br></br>
 
 {% endfor %}
 
 <div class= "page-links" >
-  <div class="pagination">
+    <div class="pagination">
 
-    {% if   all_posts.has_previous     %}
-    <a href="{% url 'user_profle' %}?page={{ all_posts.previous_page_number }}"> Previous Page</a>
-    {% endif %}
+      {% if   all_posts.has_previous     %}
+      <a href="{% url 'user_profle' %}?page={{ all_posts.previous_page_number }}"> Previous Page</a>
+      {% endif %}
 
-    {% if   all_posts.has_next     %}
-    <a href="{% url 'user_profle' %}?page={{ all_posts.next_page_number }}"> Next Page</a>
-    {% endif %}
-  </div>
-  
+      {% if   all_posts.has_next     %}
+      <a href="{% url 'user_profle' %}?page={{ all_posts.next_page_number }}"> Next Page</a>
+      {% endif %}
+    </div>
+
 </div>
 
 
