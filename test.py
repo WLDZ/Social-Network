@@ -1,6 +1,0 @@
-import os
-
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-
-print("cccccccccccc")
-print(SECRET_KEY)
