@@ -13,12 +13,17 @@
     <!-- Cover Page Content -->
     <div class="container" style="display: inline-block;">
         <input type="hidden" id="e" value="{{ profile_details.id }}">
-        <h1 style="text-align: center; margin-top: 50px;"><b>{{ profile_details.username }}</b></h1>
+        <div style="text-align: center;">
+          <div class="circular--portrait" style="display: inline-block;margin-top: 10px;">
+              <img src="{% static '/network/img/default.png' %}" />
+          </div>
+          <h1 style="display: block; margin: 10px auto 0;color:white;"><b>{{ profile_details.username }}</b></h1>
+      </div>
         <div style="clear: both">
-            <h2 style="float: left; margin-bottom: 20px;"><b>Followers</b></h2>
-            <h2 style="margin-bottom: 20px; float: left; margin-left: 5px;"><b>{{ followers }}</b></h2>
-            <h2 style="float: right; margin-bottom: 20px"><b>{{ following }}</b></h2>
-            <h2 style="float: right; margin-bottom: 20px; margin-right: 5px;"><b>Following</b></h2>
+            <h2 style="float: left; margin-bottom: 20px; color:white;"><b>Followers</b></h2>
+            <h2 style="margin-bottom: 20px; float: left; margin-left: 5px;color:white;"><b>{{ followers }}</b></h2>
+            <h2 style="float: right; margin-bottom: 20px;color:white;"><b>{{ following }}</b></h2>
+            <h2 style="float: right; margin-bottom: 20px; margin-right: 5px;color:white;"><b>Following</b></h2>
         </div>
     </div>
 </div>

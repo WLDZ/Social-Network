@@ -11,9 +11,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 
+
 from .models import Post, User,Follower,Following,Like
 
-
+@login_required(login_url='/login')
 def index(request):
     return render(request, "network/index.html")
 
@@ -488,3 +489,6 @@ def undislike(request):
     Like.objects.filter(main_user = post_onwer_id.user, post_like_user = disliker,post_id = postid,user_disliked=True).delete()
   
     return JsonResponse({"message": "Post updated successfully!!!"}, status=201)
+
+def custom_404(request, exception=None):
+    return render(request, 'network/custom_404.html', status=404)

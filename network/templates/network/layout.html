@@ -1,3 +1,5 @@
+<!-- Your layout.html file -->
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -9,15 +11,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'network/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Network</a>
-      
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Network</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}"><strong>Create a New Post</strong></a>
@@ -42,17 +46,22 @@
                     <a class="nav-link" href="{% url 'register' %}">Register</a>
                 </li>
             {% endif %}
-          </ul>
-        </div>
-    </nav>
-    
-    <div class="container mt-4">
-        <div class="body">
-            {% block body %}
-            {% endblock %}
-        </div>
+        </ul>
     </div>
+</nav>
 
-    <script src="{% static 'network/posts.js' %}"></script>
+<div class="container mt-4">
+    <div class="body">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+<!-- Ensure Bootstrap JavaScript and jQuery are included -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{% static 'network/posts.js' %}"></script>
+
 </body>
 </html>

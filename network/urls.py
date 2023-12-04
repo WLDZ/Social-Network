@@ -1,6 +1,6 @@
 
 from django.urls import path
-
+# from .views import custom_404  # Import your custom view
 
 from . import views
 
@@ -27,3 +27,5 @@ urlpatterns = [
    path ("undislike/", views.undislike, name="undislike")
 
 ]
+
+# handler404 = custom_404

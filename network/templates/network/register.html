@@ -1,6 +1,18 @@
 {% extends "network/layout.html" %}
-
+{% load static %}
 {% block body %}
+
+<style>
+    body {
+        background-image: url("{% static 'network/img/bk2.jpg' %}");
+        background-color: #f0f0f0; /* Fallback color */
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        padding: 20px;
+    }
+</style>
 
     <h2>Register</h2>
 
