@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-          DJANGO_SECRET_KEY: ${{ secrets.DB_PASSWORD }}
+      DJANGO_SECRET_KEY: ${{ secrets.DB_PASSWORD }}
       # Add other environment variables as needed
 
     steps:
