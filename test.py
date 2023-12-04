@@ -1,6 +1,6 @@
 import os
 
-x = os.environ.get('DB_PASSWORD', 'default_value')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 print("cccccccccccc")
-print(x)
+print(SECRET_KEY)
